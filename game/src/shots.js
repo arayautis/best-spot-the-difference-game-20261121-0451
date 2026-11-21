@@ -1,0 +1,3 @@
+// Stable staging used only by screenshot query states; normal play uses the same real renderer.
+import {differencesFor} from './differences.js';
+export function stageShot(name,g){const s=g.state;if(name==='menu'){s.screen='menu';s.level=0;s.score=0;s.bests=[2,1,0,0,0,0];return}if(name==='clear'){s.level=1;s.found=[];s.score=350;s.time=92;s.hearts=3;s.hints=2;s.screen='complete';s.levelStars=3;return}const level=name==='hard'?4:2,count=name==='hard'?2:3;s.level=level;s.found=differencesFor(level).slice(0,count);s.score=count*100+50;s.time=86;s.hearts=3;s.hints=2;s.screen='play';s.combo=count;}
